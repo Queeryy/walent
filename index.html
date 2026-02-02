@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Walentynka ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 25px;
+      font-size: 32px;
+      font-weight: bold;
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(5px);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    nav button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      background-color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    nav button:hover {
+      background-color: #ff6b81;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .tab {
+      display: none;
+      padding: 25px;
+      animation: fade 0.4s ease-in-out;
+      max-width: 700px;
+      margin: auto;
+      text-align: left;
+      background: rgba(255,255,255,0.6);
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+
+    .active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .love-list ul {
+      list-style: none;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.6;
+      column-count: 2;
+      column-gap: 20px;
+    }
+
+    .love-list li::before {
+      content: '❤️';
+      margin-right: 6px;
+    }
+
+    .valentine-box {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .valentine-box button {
+      padding: 14px 25px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .yes-btn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    .no-btn {
+      background-color: #ccc;
+      color: #666;
+    }
+
+    .yes-btn:hover {
+      transform: scale(1.1);
+      background-color: #ff1e4d;
+    }
+
+    h2 {
+      color: #d81b60;
+    }
+
+    p, li {
+      color: #333;
+    }
+
+    .heart-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart-bg span {
+      position: absolute;
+      font-size: 20px;
+      color: rgba(255, 77, 109, 0.7);
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .modal-content h3 {
+      color: #ff4d6d;
+      margin-bottom: 15px;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background-color: #ff4d6d;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #ff1e4d;
+    }
+
+    .thank-you {
+      margin-top: 20px;
+      font-size: 18px;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.7);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart-bg" id="heart-bg"></div>
+
+  <header>Walentynka ❤️</header>
+
+  <nav>
+    <button onclick="openTab('start')">Start</button>
+    <button onclick="openTab('love')">Więcej?</button>
+    <button onclick="openTab('valentine')">Walentynka?</button>
+  </nav>
+
+  <div id="start" class="tab active">
+    <h2>Hej Julia 💖</h2>
+    <p>Ta walentynka jest tylko dla Ciebie.</p>
+    <div class="thank-you">
+      <p>Dziękuję Ci, za wszystko – za Twój uśmiech, cierpliwość, ciepło i obecność w moim życiu.</p>
+      <p>Za każdy wspólny dzień, za wsparcie, śmiech, inspirację i drobne gesty, które sprawiają, że świat staje się piękniejszy.</p>
+      <p>Jestem wdzięczny za każdą chwilę spędzoną z Tobą i za to, że jesteś po prostu sobą.</p>
+    </div>
+  </div>
+
+  <div id="love" class="tab">
+    <h2>Za co Cię kocham?</h2>
+    <div class="love-list">
+      <ul>
+        <li>Za Twój uśmiech</li>
+        <li>Za poczucie humoru</li>
+        <li>Za Twoją troskę</li>
+        <li>Za odwagę i determinację</li>
+        <li>Za piękne oczy</li>
+        <li>Za szczerość</li>
+        <li>Za wrażliwość</li>
+        <li>Za inspirację</li>
+        <li>Za cierpliwość</li>
+        <li>Za Twój głos</li>
+        <li>Za wspólne marzenia</li>
+        <li>Za styl</li>
+        <li>Za pocieszanie w trudnych chwilach</li>
+        <li>Za kreatywność</li>
+        <li>Za wyjątkowość</li>
+        <li>Za empatię</li>
+        <li>Za wspólne śmiechy</li>
+        <li>Za wiarę we mnie</li>
+        <li>Za optymizm</li>
+        <li>Za romantyzm</li>
+        <li>Za pamięć o drobnych rzeczach</li>
+        <li>Za pyszne potrawy</li>
+        <li>Za inspirujące rozmowy</li>
+        <li>Za przyjaźń</li>
+        <li>Za wspólne podróże</li>
+        <li>Za wsparcie w trudnych chwilach</li>
+        <li>Za radość</li>
+        <li>Za poczucie bezpieczeństwa</li>
+        <li>Za inteligencję</li>
+        <li>Za pozytywne nastawienie</li>
+        <li>Za zabawne historie</li>
+        <li>Za pasję</li>
+        <li>Za zrozumienie</li>
+        <li>Za serdeczność</li>
+        <li>Za odwagę w wyzwaniach</li>
+        <li>Za spontaniczne przygody</li>
+        <li>Za bycie sobą</li>
+        <li>Za codzienność razem</li>
+        <li>Za wspólne święta</li>
+        <li>Za kreatywne pomysły</li>
+        <li>Za wsparcie emocjonalne</li>
+        <li>Za Twój urok</li>
+        <li>Za radość z drobnych rzeczy</li>
+        <li>Za wrażliwość</li>
+        <li>Za wspólne hobby</li>
+        <li>Za piękne gesty</li>
+        <li>Za szczere słowa</li>
+        <li>Za ciepło</li>
+        <li>Za naszą miłość</li>
+        <li>Za każdy wspólny dzień</li>
+        <li>Za dobre serce</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="valentine" class="tab">
+    <h2>Czy zostaniesz moją Walentynką? 💘</h2>
+    <div class="valentine-box">
+      <button class="yes-btn" id="yesBtn" onclick="showModal()">Tak!</button>
+      <button class="no-btn" id="noBtn" onclick="noClick()">Nie</button>
+    </div>
+  </div>
+
+  <div class="modal" id="valentineModal">
+    <div class="modal-content">
+      <h3>Dziękuję ! ❤️</h3>
+      <p>Kocham Cię bardzo mycha! 💘 ️</p>
+      <button onclick="closeModal()">Zamknij</button>
+    </div>
+  </div>
+
+  <script>
+    function openTab(tabId) {
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      window.scrollTo(0,0);
+    }
+
+    const heartBg = document.getElementById('heart-bg');
+    for(let i=0; i<30; i++){
+      const heart = document.createElement('span');
+      heart.textContent = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+      heart.style.fontSize = (12 + Math.random() * 24) + 'px';
+      heartBg.appendChild(heart);
+    }
+
+    function showModal() {
+      document.getElementById('valentineModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('valentineModal').style.display = 'none';
+    }
+
+    let scale = 1;
+    function noClick() {
+      scale += 0.1;
+      document.getElementById('yesBtn').style.transform = `scale(${scale})`;
+      document.getElementById('yesBtn').style.transition = 'transform 0.2s ease-in-out';
+    }
+  </script>
+
+</body>
+</html>
