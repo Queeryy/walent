@@ -316,14 +316,50 @@
     function closeModal() {
       document.getElementById('valentineModal').style.display = 'none';
     }
+const noTexts = [
+  "Na pewno? 🥺",
+  "Przemyśl to… 💭",
+  "Serio nie? 😢",
+  "Oj no weź 😘",
+  "Juliaaaa 😭",
+  "To boli 💔",
+  "Daj szansę 😇",
+  "Jeszcze raz kliknij…",
+  "To ostatnia szansa!",
+  "Źle klikasz 😜"
+];
 
-    let scale = 1;
-    function noClick() {
-      scale += 0.1;
-      document.getElementById('yesBtn').style.transform = `scale(${scale})`;
-      document.getElementById('yesBtn').style.transition = 'transform 0.2s ease-in-out';
-    }
+let scale = 1;
+let textIndex = 0;
+
+function noClick() {
+  const yesBtn = document.getElementById('yesBtn');
+  const noBtn = document.getElementById('noBtn');
+
+  // Powiększanie TAK
+  scale += 0.1;
+  yesBtn.style.transform = `scale(${scale})`;
+  yesBtn.style.transition = 'transform 0.2s ease-in-out';
+
+  // Zmiana tekstu
+  noBtn.textContent = noTexts[textIndex % noTexts.length];
+  textIndex++;
+
+  // Uciekanie przycisku (delikatne)
+  const maxX = 80;
+  const maxY = 40;
+
+  const moveX = Math.random() * maxX - maxX / 2;
+  const moveY = Math.random() * maxY - maxY / 2;
+
+  noBtn.style.position = 'relative';
+  noBtn.style.left = moveX + 'px';
+  noBtn.style.top = moveY + 'px';
+  noBtn.style.transition = 'all 0.3s ease';
+}
+
   </script>
 
 </body>
 </html>
+
